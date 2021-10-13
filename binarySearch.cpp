@@ -49,9 +49,9 @@ int main(){
     int key;
     cout<<"Enter Key: ";
     cin>>key;
-    int pos = binarySearch(int arr,0,n-1,key);
+    int pos = binarySearch(arr,0,n-1,key);
 
-    if(pos)cout<<"Your key found at position "<<pos<<endl;
+    if(pos)cout<<"Your key found."<<endl;
     else cout<<"Your key is not found."<<endl;
 
     return 0;
