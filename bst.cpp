@@ -27,6 +27,19 @@ Node *insertBST(Node *root, int data)
     return root;
 }
 
+int search(Node *root, int key)
+{
+    if (root == NULL)
+        return -1;
+    if (root->data == key)
+        return 1;
+
+    if (root->data > key)
+        return search(root->l, key);
+    else
+        return search(root->r, key);
+}
+
 void inorder(Node *root)
 {
     if (root == NULL)
@@ -53,9 +66,13 @@ int main()
         cin >> v;
         insertBST(root, v);
     }
-    cout << "Inorder Traversal: " << endl;
-    inorder(root);
-    cout << endl;
+    int key;
+    cout << "Enter Key: ";
+    cin >> key;
+    if (search(root, key) != -1)
+        cout << "Found" << endl;
+    else
+        cout << "Not Found" << endl;
 
     return 0;
 }
