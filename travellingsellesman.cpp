@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define V 1000
+#define V 100
 
 int travllingSalesmanProblem(int graph[][V], int v, int s)
 {
@@ -39,7 +39,7 @@ int main()
     int n = 0;
     cin >> n;
 
-    int graph[1000][1000];
+    int graph[V][V];
     int u, v, wt;
     for (int i = 0; i < (n - 1) * n / 2; i++)
     {
