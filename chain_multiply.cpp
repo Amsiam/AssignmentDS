@@ -13,6 +13,22 @@ int min(int a, int b)
 
 int split[1000][1000];
 
+void printBracket(int i, int j, int n, char &c)
+{
+
+    if (i == j)
+    {
+        cout << c;
+        c++;
+        return;
+    }
+    cout << "(";
+    printBracket(i, split[i][j], n, c);
+    printBracket(split[i][j] + 1, j, n, c);
+
+    cout << ")";
+}
+
 int mcm(int i, int j)
 {
     if (i == j)
@@ -42,6 +58,7 @@ signed main()
 
     int N;
     cin >> N;
+    N++;
 
     memset(dp, -1, sizeof(dp));
 
@@ -51,16 +68,10 @@ signed main()
         cin >> arr[i];
     }
 
-    cout << mcm(1, N - 1) << endl;
-
-    for (int i = 1; i < N; i++)
-    {
-        for (int j = i + 1; j < N; j++)
-        {
-            cout << split[i][j] << " ";
-        }
-        cout << endl;
-    }
+    cout << "Min Cost: " << mcm(1, N - 1) << endl;
+    cout << "Combination: ";
+    char start = 'A';
+    printBracket(1, N - 1, N, start);
 }
 
 // input:
