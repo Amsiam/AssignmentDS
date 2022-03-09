@@ -45,6 +45,36 @@ void unionn(int u, int v, vector<int> &parent, vector<int> &rank)
     }
 }
 
+void kruskalsAlgo(vector<Node> g, int N, int M)
+{
+    sort(g.begin(), g.end(), comp);
+
+    vector<int> parent(N);
+    vector<int> rank(N, 0);
+
+    for (int i = 0; i < N; i++)
+        parent[i] = i;
+
+    vector<pair<int, int>> mst;
+    int minCost = 0;
+
+    for (auto it : g)
+    {
+        if (findPair(it.u, parent) != findPair(it.v, parent))
+        {
+            minCost += it.w;
+            mst.push_back({it.u, it.v});
+            unionn(it.u, it.v, parent, rank);
+        }
+    }
+    cout << "Min Cost: " << minCost << endl;
+
+    for (auto it : mst)
+    {
+        cout << it.first << " " << it.second << endl;
+    }
+}
+
 int main()
 {
 
@@ -59,28 +89,21 @@ int main()
         cin >> a >> b >> w;
         g.push_back(Node(a, b, w));
     }
-
-    sort(g.begin(), g.end(), comp);
-
-    vector<int> parent(N);
-    vector<int> rank(N, 0);
-
-    for (int i = 0; i < N; i++)
-        parent[i] = i;
-
-    vector<pair<int, int>> mst;
-
-    for (auto it : g)
-    {
-        if (findPair(it.u, parent) != findPair(it.v, parent))
-        {
-            mst.push_back({it.u, it.v});
-            unionn(it.u, it.v, parent, rank);
-        }
-    }
-
-    for (auto it : mst)
-    {
-        cout << it.first << " " << it.second << endl;
-    }
+    kruskalsAlgo(g, N, M);
 }
+
+// Input
+//  8 13
+//  1 2 1
+//  1 3 1
+//  1 4 3
+//  3 4 4
+//  3 5 2
+//  4 5 4
+//  4 6 5
+//  5 7 2
+//  6 7 2
+//  6 8 6
+//  7 8 7
+//  2 6 3
+//  2 8 6
