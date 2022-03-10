@@ -31,13 +31,13 @@ int main()
     sort(times.begin(), times.end(), comp);
 
     int i = 0;
-    cout << "( " << times[i].startTime << "," << times[i].endTime << ")" << endl;
+    cout << "( " << times[i].startTime << "," << times[i].endTime << " )" << endl;
     for (int j = 1; j < n; j++)
     {
         if (times[j].startTime >= times[i].endTime)
         {
             i = j;
-            cout << "( " << times[i].startTime << "," << times[i].endTime << ")" << endl;
+            cout << "( " << times[i].startTime << "," << times[i].endTime << " )" << endl;
         }
     }
 }

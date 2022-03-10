@@ -36,16 +36,16 @@ int travllingSalesmanProblem(int graph[][V], int v, int s)
 int main()
 {
 
-    int n = 0;
-    cin >> n;
+    int n = 0, e = 0;
+    cout << "Enter Number of Vertices and Edges: ";
+    cin >> n >> e;
 
     int graph[V][V];
     int u, v, wt;
-    for (int i = 0; i < (n - 1) * n / 2; i++)
+    for (int i = 0; i < e; i++)
     {
         cin >> u >> v >> wt;
         graph[u][v] = wt;
-        graph[v][u] = wt;
     }
 
     int s = 0;
@@ -54,10 +54,16 @@ int main()
 }
 
 // Input:
-// 4
+// 4 12
 // 0 1 10
+// 1 0 10
 // 0 2 15
+// 2 0 15
 // 0 3 20
+// 3 0 20
 // 1 2 35
+// 2 1 35
 // 1 3 25
+// 3 1 25
+// 3 2 30
 // 2 3 30
