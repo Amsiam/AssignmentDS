@@ -17,24 +17,35 @@ publisher_name varchar(255),
 PRIMARY KEY(books_id)
 
 );
+```
+```
 CREATE TABLE member(
 member_id INT(11) AUTO_INCREMENT,
 NAME VARCHAR(255),
 address TEXT,
 phone VARCHAR(11),
 PRIMARY KEY(member_id)
-); CREATE TABLE designations(
+); 
+```
+```
+CREATE TABLE designations(
 designation_id INT(11) AUTO_INCREMENT,
 title VARCHAR(50),
 
 PRIMARY KEY(designation_id)
-); CREATE TABLE ISSUER(
+); 
+```
+```
+CREATE TABLE ISSUER(
 issuer_id INT(11) AUTO_INCREMENT,
 issuer_name VARCHAR(255),
 designation_id INT(11),
 PRIMARY KEY(issuer_id),
 FOREIGN KEY(designation_id) REFERENCES designations(designation_id)
-); CREATE TABLE books_lend(
+); 
+```
+```
+CREATE TABLE books_lend(
 id INT(11) AUTO_INCREMENT,
 member_id INT(11),
 issuer_id INT(11),
@@ -50,9 +61,27 @@ FOREIGN KEY(book_id) REFERENCES books(book_id)
 ## 3. Insert at least five values to all tables.
 ```
 INSERT INTO designations(title) VALUES("A"),("B"),("C"),("D"),("E");
+```
+```
 INSERT INTO ISSUER(issuer_name,designation_id) VALUES("A",1),("B",1),("BA",2),("AB",2),("ACD",3);
-INSERT INTO member(name,address,phone) VALUES("A","abc","01700823600"),("AB","abc","01700823604"),("AC","abc","01700823603"),("AD","abc","01700823602"),("AE","abc","01700823601");
-INSERT INTO books(book_title,author,price,publisher_name) VALUES("book1","abc",100,"pub1"),("book2","abc",120,"pub1"),("book3","abc",130,"pub2"),("book4","abc1",105,"pub12"),("book5","def",100,"pub1");
+```
+```
+INSERT INTO member(name,address,phone) VALUES
+("A","abc","01700823600"),
+("AB","abc","01700823604"),
+("AC","abc","01700823603"),
+("AD","abc","01700823602"),
+("AE","abc","01700823601");
+```
+```
+INSERT INTO books(book_title,author,price,publisher_name) VALUES
+("book1","abc",100,"pub1"),
+("book2","abc",120,"pub1"),
+("book3","abc",130,"pub2"),
+("book4","abc1",105,"pub12"),
+("book5","def",100,"pub1");
+```
+```
 INSERT INTO books_lend(member_id,issuer_id,book_id,issue_date,return_date) VALUES
 (1,2,1,"2022-12-13","2022-12-20"),
 (1,1,3,"2022-12-11","2022-12-21"),
